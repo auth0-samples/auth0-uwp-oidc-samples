@@ -1,7 +1,6 @@
 ﻿{
   "dependencies": {
-    "Auth0.OidcClient.WinForms": "0.1.0-beta7",
-    "Microsoft.IdentityModel.Tokens": "5.1.3-pre-402190021",
+    "Auth0.OidcClient.UWP": "1.0.0-beta1",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
   },
   "frameworks": {
