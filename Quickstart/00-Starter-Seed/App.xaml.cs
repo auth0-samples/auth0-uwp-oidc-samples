@@ -33,6 +33,9 @@ namespace UWPSample
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 this.DebugSettings.EnableFrameRateCounter = true;
+
+                // Get the app callback URI. You need to register this URL in the Callback URLs section for your Client in the Auth0 dashboard
+                System.Diagnostics.Debug.WriteLine(Windows.Security.Authentication.Web.WebAuthenticationBroker.GetCurrentApplicationCallbackUri());
             }
 #endif
             Frame rootFrame = Window.Current.Content as Frame;

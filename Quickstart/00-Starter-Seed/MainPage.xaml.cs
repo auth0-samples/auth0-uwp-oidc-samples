@@ -34,7 +34,11 @@ namespace UWPSample
             string domain = "{DOMAIN}";
             string clientId = "{CLIENT_ID}";
 
-            var client = new Auth0Client(domain, clientId);
+            var client = new Auth0Client(new Auth0ClientOptions
+            {
+                Domain = domain,
+                ClientId = clientId
+            });
 
             var extraParameters = new Dictionary<string, string>();
 
