@@ -1,6 +1,6 @@
 # Login
 
-This example shows how to add ***Login/SignUp*** to your Windows Universal Platform application using the [Auth0 OIDC Client for .NET](https://github.com/auth0/auth0-oidc-client-net).
+This example shows how to use the Auth0 OIDC Client with a Windows UWP (Universal Windows Platform) C# application.
 
 You can read a quickstart for this sample [here](https://auth0.com/docs/quickstart/native/windows-uwp-csharp). 
 
