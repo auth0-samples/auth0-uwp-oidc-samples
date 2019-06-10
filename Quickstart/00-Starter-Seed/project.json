@@ -1,6 +1,6 @@
 ﻿{
   "dependencies": {
-    "Auth0.OidcClient.UWP": "2.0.0",
+    "Auth0.OidcClient.UWP": "2.3.1",
     "Microsoft.NETCore.UniversalWindowsPlatform": "6.1.4"
   },
   "frameworks": {

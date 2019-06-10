@@ -24,21 +24,25 @@ namespace UWPSample
             "windowslive"
         };
 
+        private Auth0Client client;
+
         public MainPage()
         {
             this.InitializeComponent();
         }
 
-        private async void loginButton_Click(object sender, RoutedEventArgs e)
+        private async void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             string domain = "{DOMAIN}";
             string clientId = "{CLIENT_ID}";
 
-            var client = new Auth0Client(new Auth0ClientOptions
+            Auth0ClientOptions clientOptions = new Auth0ClientOptions
             {
                 Domain = domain,
                 ClientId = clientId
-            });
+            };
+            client = new Auth0Client(clientOptions);
+            clientOptions.PostLogoutRedirectUri = clientOptions.RedirectUri;
 
             var extraParameters = new Dictionary<string, string>();
 
@@ -59,6 +63,11 @@ namespace UWPSample
                 resultTextBox.Text = loginResult.Error;
                 return;
             }
+
+            // Hide login button
+            loginButton.Visibility = Visibility.Collapsed;
+            // Display logout button
+            logoutButton.Visibility = Visibility.Visible;
 
             // Display result
             StringBuilder sb = new StringBuilder();
@@ -83,6 +92,19 @@ namespace UWPSample
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             connectionNameAutoSuggestBox.ItemsSource = _connectionNames;
+        }
+
+        private async void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            await client.LogoutAsync();
+            // Hide logout button
+            logoutButton.Visibility = Visibility.Collapsed;
+            // Display login button
+            loginButton.Visibility = Visibility.Visible;
+            // Clean up form
+            resultTextBox.Text = "";
+            connectionNameAutoSuggestBox.ItemsSource = _connectionNames;
+            audienceTextBox.Text = "";
         }
     }
 }

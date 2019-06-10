@@ -12,7 +12,8 @@
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Audience:" VerticalAlignment="Top" Margin="10,53,0,0"/>
         <AutoSuggestBox  x:Name="connectionNameAutoSuggestBox" VerticalAlignment="Top" Margin="94,10,10,0"/>
         <TextBox x:Name="audienceTextBox" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="94,47,10,0"/>
-        <Button x:Name="loginButton" Content="Login" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,84,10,0" Width="57" Click="loginButton_Click"/>
+        <Button x:Name="loginButton" Content="Login" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,84,10,0" Width="57" Click="LoginButton_Click"/>
+        <Button x:Name="logoutButton" Content="Logout" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,84,10,0" Width="70" Click="LogoutButton_Click" Visibility="Collapsed"/>
         <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Result:" VerticalAlignment="Top" Margin="10,118,0,0"/>
         <TextBox x:Name="resultTextBox" TextWrapping="Wrap" Text="" Margin="10,143,10,10"/>
 
