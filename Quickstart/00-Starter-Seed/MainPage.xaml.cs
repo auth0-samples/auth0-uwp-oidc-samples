@@ -4,6 +4,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Auth0.OidcClient;
 using IdentityModel.OidcClient;
+using IdentityModel.OidcClient.Browser;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -36,13 +37,11 @@ namespace UWPSample
             string domain = "{DOMAIN}";
             string clientId = "{CLIENT_ID}";
 
-            Auth0ClientOptions clientOptions = new Auth0ClientOptions
+            client = new Auth0Client(new Auth0ClientOptions
             {
                 Domain = domain,
                 ClientId = clientId
-            };
-            client = new Auth0Client(clientOptions);
-            clientOptions.PostLogoutRedirectUri = clientOptions.RedirectUri;
+            });
 
             var extraParameters = new Dictionary<string, string>();
 
@@ -96,7 +95,12 @@ namespace UWPSample
 
         private async void LogoutButton_Click(object sender, RoutedEventArgs e)
         {
-            await client.LogoutAsync();
+            BrowserResultType browserResult = await client.LogoutAsync();
+            if (browserResult != BrowserResultType.Success)
+            {
+                resultTextBox.Text = browserResult.ToString();
+                return;
+            }
             // Hide logout button
             logoutButton.Visibility = Visibility.Collapsed;
             // Display login button
