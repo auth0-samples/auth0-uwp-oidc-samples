@@ -4,6 +4,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Auth0.OidcClient;
 using IdentityModel.OidcClient;
+using IdentityModel.OidcClient.Browser;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -24,17 +25,19 @@ namespace UWPSample
             "windowslive"
         };
 
+        private Auth0Client client;
+
         public MainPage()
         {
             this.InitializeComponent();
         }
 
-        private async void loginButton_Click(object sender, RoutedEventArgs e)
+        private async void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             string domain = "{DOMAIN}";
             string clientId = "{CLIENT_ID}";
 
-            var client = new Auth0Client(new Auth0ClientOptions
+            client = new Auth0Client(new Auth0ClientOptions
             {
                 Domain = domain,
                 ClientId = clientId
@@ -60,6 +63,11 @@ namespace UWPSample
                 return;
             }
 
+            // Hide login button
+            loginButton.Visibility = Visibility.Collapsed;
+            // Display logout button
+            logoutButton.Visibility = Visibility.Visible;
+
             // Display result
             StringBuilder sb = new StringBuilder();
 
@@ -83,6 +91,24 @@ namespace UWPSample
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             connectionNameAutoSuggestBox.ItemsSource = _connectionNames;
+        }
+
+        private async void LogoutButton_Click(object sender, RoutedEventArgs e)
+        {
+            BrowserResultType browserResult = await client.LogoutAsync();
+            if (browserResult != BrowserResultType.Success)
+            {
+                resultTextBox.Text = browserResult.ToString();
+                return;
+            }
+            // Hide logout button
+            logoutButton.Visibility = Visibility.Collapsed;
+            // Display login button
+            loginButton.Visibility = Visibility.Visible;
+            // Clean up form
+            resultTextBox.Text = "";
+            connectionNameAutoSuggestBox.ItemsSource = _connectionNames;
+            audienceTextBox.Text = "";
         }
     }
 }
