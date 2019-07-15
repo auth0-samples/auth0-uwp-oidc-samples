@@ -14,6 +14,17 @@
         "review",
         "maintenance"
       ]
+    },
+    {
+      "login": "damieng",
+      "name": "Damien Guard",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/118951?v=4",
+      "profile": "https://damieng.com",
+      "contributions": [
+        "code",
+        "review",
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
