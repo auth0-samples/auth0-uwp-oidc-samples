@@ -8,14 +8,14 @@
 
   <Identity
     Name="9ef5acf6-fd58-433b-b1b7-8936e288c8e9"
-    Publisher="CN=jerri"
+    Publisher="CN=Auth0 Community"
     Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="9ef5acf6-fd58-433b-b1b7-8936e288c8e9" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>UWPSample</DisplayName>
-    <PublisherDisplayName>jerri</PublisherDisplayName>
+    <PublisherDisplayName>Auth0 Community</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
